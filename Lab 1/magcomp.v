@@ -1,0 +1,35 @@
+module bcd_to_gray(a3,a2,a1,a0,b3,b2,b1,b0,op0,op1,op2);
+	input a3,a2,a1,a0,b3,b2,b1,b0;
+	output op0,op1,op2;
+	wire w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16,w17,w18,w19,w20,w21,w22,w23,w24,w25,w26;
+
+	not n1(w1,a3);
+	not n2(w2,b3);
+	not n3(w3,a2);
+	not n4(w4,b2);
+	not n5(w5,a1);
+	not n6(w6,b1);
+	not n7(w7,a0);
+	not n8(w8,b0);
+	and a1(w9,w1,b3);
+	and a2(w10,w2,a3);
+	and a3(w11,w3,b2);
+	and a4(w12,w4,a2);
+	and a5(w13,w5,b1);
+	and a6(w14,w6,a1);
+	and a7(w15,w7,b0);
+	and a8(w16,w8,a0);
+	nor no1(w17,w9,w10);
+	nor no1(w18,w11,w12);
+	nor no1(w19,w13,w14);
+	nor no1(w20,w15,w16);
+	and an1(w21,w17,w11);
+	and an2(w22,w17,w12);
+	and an3(w23,w17,w13,w18);
+	and an4(w24,w17,w14,w18);
+	and an5(w25,w17,w15,w18,w19);
+	and an6(w26,w17,w16,w18,w20);
+	and an7(op2,w17,w18,w19,w20);
+	or ord0(op0,w9,w21,w23,w25);
+	or ord1(op1,w10,w22,w24,w26);
+endmodule
